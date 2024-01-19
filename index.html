@@ -45,14 +45,14 @@
 
         // Adding Rectangles (This is for blue stripes on top and bottom of flag) 
         svg.append("rect")
-            .attr("width", "100%")
-            .attr("height", "10%")
+            .attr("width", "90%")
+            .attr("height", "7%")
             .attr("fill", "blue");
 
         svg.append("rect")
             .attr("y", "90%")
-            .attr("width", "100%")
-            .attr("height", "10%")
+            .attr("width", "90%")
+            .attr("height", "7%")
             .attr("fill", "blue");
 
         // Add Circles
@@ -94,30 +94,28 @@
                 .attr("fill", "blue");
         });
 
-        // Define the points for the two triangles, where lines will be overlapping
-        var starPoints = [
-          {x: 300, y: 200},
-          {x: 320, y: 260},
-          {x: 380, y: 260},
-          {x: 330, y: 290},
-          {x: 350, y: 350},
-          {x: 300, y: 320},
-          {x: 250, y: 350},
-          {x: 270, y: 290},
-          {x: 220, y: 260},
-          {x: 280, y: 260},
-          {x: 300, y: 200}
-        ];
+        // Define the points for the two overlapping triangles
+var starPoints = [
+  {x: 300, y: 150}, // Top point
+  {x: 330, y: 250}, // Right point of the upper triangle
+  {x: 270, y: 250}, // Left point of the upper triangle
+  {x: 300, y: 150}, // Back to top point
+  {x: 350, y: 200}, // Right point of the lower triangle
+  {x: 250, y: 200}  // Left point of the lower triangle
+];
 
-        // Create a line generator
-        var lineGenerator = d3.line()
-          .x(function(d) { return d.x; })
-          .y(function(d) { return d.y; });
+// Create a line generator
+var lineGenerator = d3.line()
+  .x(function(d) { return d.x; })
+  .y(function(d) { return d.y; });
 
-        // Draw the Star of David in the middle of the screen
-        svg.append("path")
-          .attr("d", lineGenerator(starPoints))
-          .attr("fill", "blue");
+// Draw the Star of David
+svg.append("path")
+  .attr("d", lineGenerator(starPoints))
+  .attr("fill", "blue")
+  .attr("stroke", "blue")
+  .attr("stroke-width", 2)
+  .attr("fill-rule", "evenodd"); // This is important for the fill to work correctly
     </script>
 </body>
 </html>
