@@ -111,7 +111,7 @@
         ];
 
         // Create a line generator
-        var lineGenerator = d3.line()
+  var lineGenerator = d3.line()
           .x(function(d) { return d.x; })
           .y(function(d) { return d.y; });
 
@@ -130,6 +130,28 @@
           .attr("stroke", "blue")
           .attr("stroke-width", 2)
           .attr("fill-rule", "evenodd"); // This is important for the fill to work correctly
+
+      // Add Polygon (Hexagon points)
+var hexagonPoints = "300,200 350,250 300,300 250,250";
+
+// Create the hexagon
+var hexagon = svg.append("polygon")
+    .attr("points", hexagonPoints)
+    .attr("fill", "lightblue");
+
+// Define the rotation animation
+var animate = function() {
+    hexagon.transition()
+        .duration(2000)
+        .attrTween("transform", function() {
+            return d3.interpolateString("rotate(0,300,250)", "rotate(360,300,250)");
+        })
+        .on("end", animate);
+};
+
+// Start the animation
+animate();
+
     </script>
 </body>
 </html>
