@@ -151,7 +151,7 @@ var animate = function() {
     hexagon.transition()
         .duration(2250)
         .attrTween("transform", function() {
-           return d3.interpolateString("rotate(0,300,200)", "rotate(360,300,200)");
+           return d3.interpolateString("rotate(0,300,200)", "rotate(90,300,200)");
         })
         .on("end", animate);
 };
