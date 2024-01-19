@@ -149,7 +149,7 @@ var hexagon = svg.append("polygon")
 // Define the rotation animation
 var animate = function() {
     hexagon.transition()
-        .duration(2250)
+        .duration(5000)
         .attrTween("transform", function() {
            return d3.interpolateString("rotate(0,300,200)", "rotate(90,300,200)");
         })
