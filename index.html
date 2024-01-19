@@ -132,12 +132,18 @@
           .attr("fill-rule", "evenodd"); // This is important for the fill to work correctly
 
 // Add Polygon (Hexagon)
-// Define the points for the hexagon
-var hexagonPoints = "300,180 330,200 330,230 300,250 270,230 270,200";
-
+var size = 30;
+var hexagonPoints = [
+  {x: 300, y: 200 - size}, // Top point
+  {x: 300 + size * Math.sqrt(3) / 2, y: 200 - size / 2}, // Upper right point
+  {x: 300 + size * Math.sqrt(3) / 2, y: 200 + size / 2}, // Lower right point
+  {x: 300, y: 200 + size}, // Bottom point
+  {x: 300 - size * Math.sqrt(3) / 2, y: 200 + size / 2}, // Lower left point
+  {x: 300 - size * Math.sqrt(3) / 2, y: 200 - size / 2} // Upper left point
+].map(function(d) { return [d.x, d.y]; }).join(" ");
 var hexagon = svg.append("polygon")
     .attr("points", hexagonPoints)
-    .attr("fill", "lightblue");
+    .attr("fill", "white");
       
 //Get the center of the hexagon for animation      
 var centerX = (300 + 330 + 330 + 300 + 270 + 270) / 6;
