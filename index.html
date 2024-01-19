@@ -86,13 +86,13 @@
         d3.range(numCirclesY).map(function(i) {
             svg.append("circle")
                 .attr("cx", 0 + circleRadius) // Add an offset to the x position
-                .attr("cy", i * circleSpacing + circleRadius) // Add an offset to the y position
+                .attr("cy", i * circleRadius) // Add an offset to the y position
                 .attr("r", circleRadius)
                 .attr("fill", "blue");
 
             svg.append("circle")
-                .attr("cx", svg.attr("width") - circleSpacing + circleRadius) // Add an offset to the x position
-                .attr("cy", i * circleSpacing + circleRadius) // Add an offset to the y position
+                .attr("cx", svg.attr("width") + circleRadius) // Add an offset to the x position
+                .attr("cy", i * circleRadius) // Add an offset to the y position
                 .attr("r", circleRadius)
                 .attr("fill", "blue");
         });
