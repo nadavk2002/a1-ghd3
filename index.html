@@ -138,13 +138,17 @@ var hexagonPoints = "300,180 330,200 330,230 300,250 270,230 270,200";
 var hexagon = svg.append("polygon")
     .attr("points", hexagonPoints)
     .attr("fill", "lightblue");
-
+      
+//Get the center of the hexagon for animation      
+var centerX = (300 + 330 + 330 + 300 + 270 + 270) / 6;
+var centerY = (180 + 200 + 230 + 250 + 230 + 200) / 6;
+      
 // Define the rotation animation
 var animate = function() {
     hexagon.transition()
         .duration(2000)
         .attrTween("transform", function() {
-            return d3.interpolateString("rotate(0,300,210)", "rotate(360,300,210)");
+           return d3.interpolateString("rotate(0," + centerX + "," + centerY + ")", "rotate(360," + centerX + "," + centerY + ")");
         })
         .on("end", animate);
 };
