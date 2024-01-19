@@ -97,17 +97,17 @@
                 .attr("fill", "blue");
         });
 
-        // Define the points for the two overlapping triangles to form a Star of David
-        var starPoints = [
-          {x: 300, y: 200}, // Top point of the upper triangle
-          {x: 350, y: 300}, // Right point of the upper triangle
-          {x: 250, y: 300}, // Left point of the upper triangle
-          {x: 300, y: 200}, // Back to top point
-          {x: 350, y: 100}, // Right point of the lower triangle
-          {x: 250, y: 100}, // Left point of the lower triangle
-          {x: 300, y: 200}, // Back to top point
-          {x: 250, y: 300}, // Left point of the upper triangle
-          {x: 350, y: 300}  // Right point of the upper triangle
+                // Define the points for the two overlapping triangles to form a Star of David
+        var starPoints1 = [
+          {x: 300, y: 150}, // Top point of the first triangle
+          {x: 350, y: 250}, // Right point of the first triangle
+          {x: 250, y: 250}  // Left point of the first triangle
+        ];
+
+        var starPoints2 = [
+          {x: 300, y: 250}, // Bottom point of the second triangle
+          {x: 350, y: 150}, // Right point of the second triangle
+          {x: 250, y: 150}  // Left point of the second triangle
         ];
 
         // Create a line generator
@@ -115,9 +115,17 @@
           .x(function(d) { return d.x; })
           .y(function(d) { return d.y; });
 
-        // Draw the Star of David
+        // Draw the first triangle of the Star of David
         svg.append("path")
-          .attr("d", lineGenerator(starPoints))
+          .attr("d", lineGenerator(starPoints1))
+          .attr("fill", "blue")
+          .attr("stroke", "blue")
+          .attr("stroke-width", 2)
+          .attr("fill-rule", "evenodd"); // This is important for the fill to work correctly
+
+        // Draw the second triangle of the Star of David
+        svg.append("path")
+          .attr("d", lineGenerator(starPoints2))
           .attr("fill", "blue")
           .attr("stroke", "blue")
           .attr("stroke-width", 2)
