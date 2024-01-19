@@ -71,8 +71,8 @@
         function createCircleRow(y) {
             d3.range(numCirclesX).map(function(i) {
                 svg.append("circle")
-                    .attr("cx", i * circleSpacing)
-                    .attr("cy", y)
+                    .attr("cx", i * circleSpacing + circleRadius) // Add an offset to the x position
+                    .attr("cy", y + circleRadius) // Add an offset to the y position
                     .attr("r", circleRadius)
                     .attr("fill", "blue");
             });
@@ -85,26 +85,29 @@
         // Line of Circles for the left and right borders
         d3.range(numCirclesY).map(function(i) {
             svg.append("circle")
-                .attr("cx", 0)
-                .attr("cy", i * circleSpacing)
+                .attr("cx", 0 + circleRadius) // Add an offset to the x position
+                .attr("cy", i * circleSpacing + circleRadius) // Add an offset to the y position
                 .attr("r", circleRadius)
                 .attr("fill", "blue");
 
             svg.append("circle")
-                .attr("cx", svg.attr("width") - circleSpacing)
-                .attr("cy", i * circleSpacing)
+                .attr("cx", svg.attr("width") - circleSpacing + circleRadius) // Add an offset to the x position
+                .attr("cy", i * circleSpacing + circleRadius) // Add an offset to the y position
                 .attr("r", circleRadius)
                 .attr("fill", "blue");
         });
 
-        // Define the points for the two overlapping triangles
+        // Define the points for the two overlapping triangles to form a Star of David
         var starPoints = [
-          {x: 300, y: 150}, // Top point
-          {x: 330, y: 250}, // Right point of the upper triangle
-          {x: 270, y: 250}, // Left point of the upper triangle
-          {x: 300, y: 150}, // Back to top point
-          {x: 350, y: 200}, // Right point of the lower triangle
-          {x: 250, y: 200}  // Left point of the lower triangle
+          {x: 300, y: 200}, // Top point of the upper triangle
+          {x: 350, y: 300}, // Right point of the upper triangle
+          {x: 250, y: 300}, // Left point of the upper triangle
+          {x: 300, y: 200}, // Back to top point
+          {x: 350, y: 100}, // Right point of the lower triangle
+          {x: 250, y: 100}, // Left point of the lower triangle
+          {x: 300, y: 200}, // Back to top point
+          {x: 250, y: 300}, // Left point of the upper triangle
+          {x: 350, y: 300}  // Right point of the upper triangle
         ];
 
         // Create a line generator
