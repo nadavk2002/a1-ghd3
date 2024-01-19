@@ -1,5 +1,4 @@
-[http://nadavk2002.github.io/a1-ghd3/index.html
-](http://nadavk2002.github.io/a1-ghd3/index.html
+http://nadavk2002.github.io/a1-ghd3/index.html/
 
 Above is the website to my page, if properly published on my part, you will see the Israeli flag that I put my own twist on an Israeli flag. I made the flag's border with lines of circles of the same color as the two rectangle stripes the flag would normally have, and then overlayed two triangles to make a filled-in 6-pointed Star of David. The fun part behind this visualization is the animated center of the star, a hexagon oriented to fit in the middle of the star as normal and it spins 360 degrees with a sped-up start and a slowed-down finish.
 
