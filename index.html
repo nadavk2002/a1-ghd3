@@ -7,4 +7,24 @@
   // Add Circles
   // Add Lines
   // Add Polygons
+ var svg = d3.select("body").append("svg")
+    .attr("width", 600)
+    .attr("height", 400);
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr("fill", "white");
+
+svg.append("rect")
+    .attr("width", "100%")
+    .attr("height", "20%")
+    .attr("fill", "blue");
+
+svg.append("rect")
+    .attr("y", "80%")
+    .attr("width", "100%")
+    .attr("height", "20%")
+    .attr("fill", "blue");
+
 </script>
