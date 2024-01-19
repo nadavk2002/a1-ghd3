@@ -132,7 +132,7 @@
           .attr("fill-rule", "evenodd"); // This is important for the fill to work correctly
 
 // Add Polygon (Hexagon)
-var size = 40;
+var size = 37;
 var hexagonPoints = [
   {x: 300, y: 200 - size}, // Top point
   {x: 300 + size * Math.sqrt(3) / 2, y: 200 - size / 2}, // Upper right point
@@ -149,9 +149,9 @@ var hexagon = svg.append("polygon")
 // Define the rotation animation
 var animate = function() {
     hexagon.transition()
-        .duration(5000)
+        .duration(1750)
         .attrTween("transform", function() {
-           return d3.interpolateString("rotate(0,300,200)", "rotate(90,300,200)");
+           return d3.interpolateString("rotate(90,300,200)", "rotate(450,300,200)");
         })
         .on("end", animate);
 };
