@@ -8,7 +8,7 @@
   // Add Lines
   // Add Polygons
 
-  <!DOCTYPE html> //html for webpage
+  <!DOCTYPE html>
 <html>
 <head>
     <title>Nadav Konstantine Israeli FlagPlus</title>
@@ -29,30 +29,33 @@
 </head>
 <body>
     <script>
-        // Create SVG container
+        // Add an SVG
         var svg = d3.select("body").append("svg")
             .attr("width", 600)
-            .attr("height", 400);
+            .attr("height", 400)
+            .style("margin", "auto")
+            .style("display", "block");
 
-        // Draw the flag background
+        // Adding Rectangles (This is for background of flag and page)
         svg.append("rect")
             .attr("width", "100%")
             .attr("height", "100%")
             .attr("fill", "white");
 
-        // Draw the horizontal stripes
+        // Adding Rectangles (This is for blue stripes on top and bottom of flag) 
         svg.append("rect")
             .attr("width", "100%")
-            .attr("height", "20%")
+            .attr("height", "10%")
             .attr("fill", "blue");
 
         svg.append("rect")
-            .attr("y", "80%")
+            .attr("y", "90%")
             .attr("width", "100%")
-            .attr("height", "20%")
+            .attr("height", "10%")
             .attr("fill", "blue");
 
-        // Define the radius of the circles and the spacing between them
+        // Add Circles
+        // radius pixel size and spacing pixel sizes
         var circleRadius = 5;
         var circleSpacing = 10;
 
@@ -60,7 +63,7 @@
         var numCirclesX = Math.floor(svg.attr("width") / circleSpacing);
         var numCirclesY = Math.floor(svg.attr("height") / circleSpacing);
 
-        // Function to create a row of circles
+        // Helper function to create a row of circles
         function createCircleRow(y) {
             d3.range(numCirclesX).map(function(i) {
                 svg.append("circle")
@@ -71,11 +74,11 @@
             });
         }
 
-        // Create the top and bottom borders
+        // Line of Circles for the top and bottom of the flag
         createCircleRow(0);
         createCircleRow(svg.attr("height") - circleSpacing);
 
-        // Create the left and right borders
+        // Line of Circles for the left and right borders
         d3.range(numCirclesY).map(function(i) {
             svg.append("circle")
                 .attr("cx", 0)
@@ -89,6 +92,31 @@
                 .attr("r", circleRadius)
                 .attr("fill", "blue");
         });
+
+        // Define the points for the two triangles, where lines will be overlapping
+        var starPoints = [
+          {x: 300, y: 200},
+          {x: 320, y: 260},
+          {x: 380, y: 260},
+          {x: 330, y: 290},
+          {x: 350, y: 350},
+          {x: 300, y: 320},
+          {x: 250, y: 350},
+          {x: 270, y: 290},
+          {x: 220, y: 260},
+          {x: 280, y: 260},
+          {x: 300, y: 200}
+        ];
+
+        // Create a line generator
+        var lineGenerator = d3.line()
+          .x(function(d) { return d.x; })
+          .y(function(d) { return d.y; });
+
+        // Draw the Star of David in the middle of the screen
+        svg.append("path")
+          .attr("d", lineGenerator(starPoints))
+          .attr("fill", "blue");
     </script>
 </body>
 </html>
