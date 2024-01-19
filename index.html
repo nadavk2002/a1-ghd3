@@ -7,24 +7,90 @@
   // Add Circles
   // Add Lines
   // Add Polygons
- var svg = d3.select("body").append("svg")
-    .attr("width", 600)
-    .attr("height", 400);
 
-svg.append("rect")
-    .attr("width", "100%")
-    .attr("height", "100%")
-    .attr("fill", "white");
+  <!DOCTYPE html> //html for webpage
+<html>
+<head>
+    <title>Nadav Konstantine Israeli FlagPlus</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        svg {
+            border: 1px solid black;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <script>
+        // Create SVG container
+        var svg = d3.select("body").append("svg")
+            .attr("width", 600)
+            .attr("height", 400);
 
-svg.append("rect")
-    .attr("width", "100%")
-    .attr("height", "20%")
-    .attr("fill", "blue");
+        // Draw the flag background
+        svg.append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("fill", "white");
 
-svg.append("rect")
-    .attr("y", "80%")
-    .attr("width", "100%")
-    .attr("height", "20%")
-    .attr("fill", "blue");
+        // Draw the horizontal stripes
+        svg.append("rect")
+            .attr("width", "100%")
+            .attr("height", "20%")
+            .attr("fill", "blue");
+
+        svg.append("rect")
+            .attr("y", "80%")
+            .attr("width", "100%")
+            .attr("height", "20%")
+            .attr("fill", "blue");
+
+        // Define the radius of the circles and the spacing between them
+        var circleRadius = 5;
+        var circleSpacing = 10;
+
+        // Calculate the number of circles to fit along the width and height
+        var numCirclesX = Math.floor(svg.attr("width") / circleSpacing);
+        var numCirclesY = Math.floor(svg.attr("height") / circleSpacing);
+
+        // Function to create a row of circles
+        function createCircleRow(y) {
+            d3.range(numCirclesX).map(function(i) {
+                svg.append("circle")
+                    .attr("cx", i * circleSpacing)
+                    .attr("cy", y)
+                    .attr("r", circleRadius)
+                    .attr("fill", "blue");
+            });
+        }
+
+        // Create the top and bottom borders
+        createCircleRow(0);
+        createCircleRow(svg.attr("height") - circleSpacing);
+
+        // Create the left and right borders
+        d3.range(numCirclesY).map(function(i) {
+            svg.append("circle")
+                .attr("cx", 0)
+                .attr("cy", i * circleSpacing)
+                .attr("r", circleRadius)
+                .attr("fill", "blue");
+
+            svg.append("circle")
+                .attr("cx", svg.attr("width") - circleSpacing)
+                .attr("cy", i * circleSpacing)
+                .attr("r", circleRadius)
+                .attr("fill", "blue");
+        });
+    </script>
+</body>
+</html>
 
 </script>
